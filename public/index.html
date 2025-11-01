@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get instant support for Any Command - the app that lets you control your Windows PC from your Android phone.">
+  <link rel="icon" href="/icon2.png" type="image/png">
+  <title>Any Command Support - Get Help Now</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #667eea;
+      --secondary: #764ba2;
+      --dark-bg: #0f0e1a;
+      --card-bg: rgba(26, 24, 41, 0.6);
+      --text-light: #e2e8f0;
+      --text-muted: #a0aec0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text-light);
+      background: linear-gradient(135deg, #0a0914 0%, var(--dark-bg) 50%, #1a1034 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated background */
+    body::before, body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.2;
+      animation: float 20s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    body::before {
+      width: 500px;
+      height: 500px;
+      background: var(--primary);
+      top: -200px;
+      right: -200px;
+    }
+
+    body::after {
+      width: 400px;
+      height: 400px;
+      background: var(--secondary);
+      bottom: -150px;
+      left: -150px;
+      animation-delay: 10s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(30px, 30px); }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    .header {
+      padding: 2rem 0 4rem;
+      text-align: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .logo img {
+      width: 80px;
+      height: 80px;
+      filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.5));
+    }
+
+    .logo h1 {
+      font-size: 32px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 3rem 0;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Troubleshooting Grid */
+    .troubleshooting {
+      padding: 3rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h3 {
+      font-size: 32px;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(102, 126, 234, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+      border-color: var(--primary);
+    }
+
+    .card-icon {
+      font-size: 40px;
+      margin-bottom: 1rem;
+    }
+
+    .card h4 {
+      font-size: 20px;
+      color: white;
+      margin-bottom: 0.75rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .card ul {
+      list-style: none;
+      margin-top: 1rem;
+      color: var(--text-muted);
+    }
+
+    .card li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 4rem 0;
+    }
+
+    .cta h3 {
+      font-size: 32px;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .cta p {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .cta-note {
+      background: var(--card-bg);
+      border: 1px solid rgba(102, 126, 234, 0.3);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 600px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 32px;
+      }
+
+      .section-title h3 {
+        font-size: 24px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Chat Widget Placeholder */
+    .chat-widget-container {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <img src="/icon2.png" alt="Any Command">
+        <h1>Any Command Support</h1>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <h2>🚀 Need Help with Any Command?</h2>
+      <p>Get instant answers to connection issues, setup questions, and more using our AI-powered support chat!</p>
+    </section>
+
+    <!-- Troubleshooting Section -->
+    <section class="troubleshooting">
+      <div class="section-title">
+        <h3>Common Connection Issues</h3>
+        <p style="color: var(--text-muted);">Most connection problems have simple fixes. Here's what to check first:</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">📡</div>
+          <h4>Same Wi-Fi Network</h4>
+          <p>Both your phone and PC must be on the same local network.</p>
+          <ul>
+            <li>Check Wi-Fi settings on both devices</li>
+            <li>Avoid mobile data or hotspots</li>
+            <li>Hotel Wi-Fi may block connections</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🛡️</div>
+          <h4>Windows Firewall</h4>
+          <p>Allow Any Command through your firewall.</p>
+          <ul>
+            <li>Accept the firewall prompt when it appears</li>
+            <li>Allow both private and public networks</li>
+            <li>Check: Control Panel → Firewall → Allow an app</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h4>Latest Version</h4>
+          <p>Always use the most recent version.</p>
+          <ul>
+            <li>Download from anycommand.io</li>
+            <li>Old versions may have bugs</li>
+            <li>Check for updates regularly</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🔧</div>
+          <h4>Admin Mode</h4>
+          <p>Run the server as Administrator if needed.</p>
+          <ul>
+            <li>Right-click → "Run as administrator"</li>
+            <li>Helps resolve permission issues</li>
+            <li>Not always required but helpful</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🏨</div>
+          <h4>Public Networks</h4>
+          <p>Some networks isolate devices for security.</p>
+          <ul>
+            <li>Hotel/Office Wi-Fi may block connections</li>
+            <li>Try a home network instead</li>
+            <li>Mobile hotspot can work as backup</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🔄</div>
+          <h4>Restart Everything</h4>
+          <p>Simple but effective troubleshooting.</p>
+          <ul>
+            <li>Restart the PC server app</li>
+            <li>Restart the Android app</li>
+            <li>Double-check PIN and IP address</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <h3>💬 Still Having Issues?</h3>
+      <p>Chat with our AI support bot for instant help!</p>
+      <div class="cta-note">
+        <p style="font-size: 16px; margin-bottom: 1rem;">
+          <strong style="color: white;">👉 Use the chat widget in the bottom-right corner</strong>
+        </p>
+        <p style="font-size: 14px;">
+          Ask anything about connection problems, features, setup, or troubleshooting. Get instant answers powered by AI!
+        </p>
+      </div>
+      <p style="margin-top: 3rem; font-size: 14px;">
+        Join the community: 
+        <a href="https://reddit.com/r/AnyCommand" style="color: var(--primary); text-decoration: none;" target="_blank">Reddit</a> · 
+        <a href="https://www.patreon.com/c/anycommandremoteapp" style="color: var(--primary); text-decoration: none;" target="_blank">Patreon</a> · 
+        <a href="https://buymeacoffee.com/anycommand8" style="color: var(--primary); text-decoration: none;" target="_blank">Buy Me a Coffee</a>
+      </p>
+    </section>
+  </div>
+
+  <!-- Chat Widget -->
+  <script>
+    // Dynamically load the chat widget
+    const widgetUrl = window.location.hostname === 'localhost' 
+      ? `${window.location.origin}/widget.html`
+      : 'https://your-railway-app.railway.app/widget.html'; // Update with your Railway URL
+
+    document.write(`
+      <iframe 
+        id="chat-widget-iframe"
+        src="${widgetUrl}" 
+        style="position:fixed;bottom:0;right:0;width:100px;height:100px;border:none;z-index:9999;background:transparent;pointer-events:auto;"
+        allow="clipboard-write"
+        title="Any Command Support Chat"
+      ></iframe>
+    `);
+
+    // Expand iframe when chat opens
+    const iframe = document.getElementById('chat-widget-iframe');
+    if (iframe) {
+      window.addEventListener('message', (event) => {
+        if (event.data && event.data.type === 'CHAT_TOGGLE') {
+          if (event.data.isOpen) {
+            iframe.style.width = '420px';
+            iframe.style.height = '620px';
+            iframe.style.maxHeight = 'calc(100vh - 20px)';
+          } else {
+            iframe.style.width = '100px';
+            iframe.style.height = '100px';
+          }
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
+
